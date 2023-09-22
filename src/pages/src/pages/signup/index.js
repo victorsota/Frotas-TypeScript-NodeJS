@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { LayoutComponents } from "../../components";
 
 function Signup() {
@@ -7,6 +7,9 @@ function Signup() {
     email: "",
     password: "",
   });
+
+  const [erro, setErro] = useState(null);
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setDados({ ...dados, [name]: value });
@@ -28,9 +31,12 @@ function Signup() {
         // Dados enviados com sucesso
         console.log("Dados enviados com sucesso!" + resposta.json());
       } else {
+        const erroJson = await resposta.json();
+        setErro(erroJson.message);
         console.error("Erro ao enviar dados" + resposta.status);
       }
     } catch (erro) {
+      setErro("Erro na solicitação");
       console.error("Erro na solicitação:", erro);
     }
   };
@@ -41,6 +47,8 @@ function Signup() {
         <div class="centraliza">
           <h1>Cadastre-se</h1>
         </div>
+        {erro && <div className="erro">{erro}</div>}{" "}
+        {/* Mostra o erro, se houver */}
         <form onSubmit={handleSubmit}>
           <div className="wrap-input">
             <input

@@ -51,7 +51,11 @@
 .has-val + .focus-input::after {
   top: -15px;
 }
-
+.erro {
+  color: red; /* Define a cor do texto como vermelho */
+  font-size: 14px; /* Define o tamanho da fonte */
+  margin-top: 8px; /* Define a margem superior para separar a mensagem de erro de outros elementos */
+}
 .has-val + .focus-input::before {
   width: 100%;
 }
