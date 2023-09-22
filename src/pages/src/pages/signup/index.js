@@ -1,4 +1,5 @@
 import React from "react";
+import { LayoutComponents } from "../../components";
 
 function Signup() {
   const [dados, setDados] = React.useState({
@@ -35,33 +36,51 @@ function Signup() {
   };
 
   return (
-    <div>
-      <h1>Cadastre-se</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="name"
-          placeholder="Name"
-          value={dados.name}
-          onChange={handleChange}
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={dados.email}
-          onChange={handleChange}
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="password"
-          value={dados.password}
-          onChange={handleChange}
-        />
-        <button type="submit">Enviar</button>
-      </form>
-    </div>
+    <LayoutComponents>
+      <div>
+        <div class="centraliza">
+          <h1>Cadastre-se</h1>
+        </div>
+        <form onSubmit={handleSubmit}>
+          <div className="wrap-input">
+            <input
+              class="has-val input input espacamento"
+              type="text"
+              name="name"
+              placeholder="Name"
+              value={dados.name}
+              onChange={handleChange}
+            />
+            <span className="focus-input" data-placeholder="Nome"></span>
+          </div>
+          <div className="wrap-input">
+            <input
+              class="has-val input espacamento"
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={dados.email}
+              onChange={handleChange}
+            />
+            <span className="focus-input" data-placeholder="Email"></span>
+          </div>
+          <div className="wrap-input">
+            <input
+              class="has-val input espacamento"
+              type="password"
+              name="password"
+              placeholder="password"
+              value={dados.password}
+              onChange={handleChange}
+            />
+            <span className="focus-input" data-placeholder="Password"></span>
+          </div>
+          <button class="login-form-btn" type="submit">
+            Enviar
+          </button>
+        </form>
+      </div>
+    </LayoutComponents>
   );
 }
 
