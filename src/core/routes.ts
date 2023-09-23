@@ -5,6 +5,8 @@ import { FindUserById } from "./controllers/user/FindByIdUser";
 import { LoginUser } from "./controllers/auth/LoginUser";
 import { RotaAuth } from "./controllers/user/RotaAuth";
 import { CreateModelo } from "./controllers/modelo/createModelo";
+import { FindAllModelos } from "./controllers/modelo/FindAllModelos";
+import { FindByIdModelo } from "./controllers/modelo/FindByIdModelo";
 
 export const routes = Router();
 
@@ -19,3 +21,5 @@ routes.post(
   new RotaAuth().autentication
 );
 routes.post("/modelo", new CreateModelo().create);
+routes.get("/modelo", new FindAllModelos().list);
+routes.get("/modelo/:id", new FindByIdModelo().findById);
