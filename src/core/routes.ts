@@ -4,6 +4,7 @@ import { FindAllUsers } from "./controllers/user/FindAllUsers";
 import { FindUserById } from "./controllers/user/FindByIdUser";
 import { LoginUser } from "./controllers/auth/LoginUser";
 import { RotaAuth } from "./controllers/user/RotaAuth";
+import { CreateModelo } from "./controllers/modelo/createModelo";
 
 export const routes = Router();
 
@@ -17,3 +18,4 @@ routes.post(
   new LoginUser().verifyToken,
   new RotaAuth().autentication
 );
+routes.post("/modelo", new CreateModelo().create);
