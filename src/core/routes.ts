@@ -7,6 +7,7 @@ import { RotaAuth } from "./controllers/user/RotaAuth";
 import { CreateModelo } from "./controllers/modelo/createModelo";
 import { FindAllModelos } from "./controllers/modelo/FindAllModelos";
 import { FindByIdModelo } from "./controllers/modelo/FindByIdModelo";
+import { CreateVeiculo } from "./controllers/veiculo/CreateVeiculo";
 
 export const routes = Router();
 
@@ -23,3 +24,5 @@ routes.post(
 routes.post("/modelo", new CreateModelo().create);
 routes.get("/modelo", new FindAllModelos().list);
 routes.get("/modelo/:id", new FindByIdModelo().findById);
+
+routes.post("/veiculo", new CreateVeiculo().create);

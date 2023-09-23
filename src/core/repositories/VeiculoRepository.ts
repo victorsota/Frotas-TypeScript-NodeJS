@@ -1,4 +1,4 @@
 import { AppDataSource } from "../data-source";
-import { MotoristaEntity } from "../entities/MotoristaEntity";
+import { VeiculoEntity } from "../entities/VeiculoEntity";
 
-export const MotoristaRepository = AppDataSource.getRepository(MotoristaEntity);
+export const VeiculoRepository = AppDataSource.getRepository(VeiculoEntity);
