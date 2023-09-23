@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { LayoutComponents } from "../../components";
 
-function Signup() {
+function Login() {
   const [dados, setDados] = React.useState({
-    name: "",
     email: "",
     password: "",
   });
@@ -20,7 +19,7 @@ function Signup() {
 
     console.log(dados);
     try {
-      const resposta = await fetch("http://localhost:3000/users", {
+      const resposta = await fetch("http://localhost:3000/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -46,7 +45,7 @@ function Signup() {
     <LayoutComponents>
       <div>
         <div class="centraliza">
-          <h1>Cadastre-se</h1>
+          <h1>Bem-Vindo</h1>
         </div>
         {erro && <div className="erro">{erro}</div>}{" "}
         {/* Mostra o erro, se houver */}
@@ -55,42 +54,29 @@ function Signup() {
             <input
               class="has-val input input espacamento"
               type="text"
-              name="name"
-              placeholder="Name"
-              value={dados.name}
-              onChange={handleChange}
-            />
-            <span className="focus-input" data-placeholder="Nome"></span>
-          </div>
-          <div className="wrap-input">
-            <input
-              class="has-val input espacamento"
-              type="email"
               name="email"
               placeholder="Email"
               value={dados.email}
               onChange={handleChange}
             />
-            <span className="focus-input" data-placeholder="Email"></span>
           </div>
           <div className="wrap-input">
             <input
-              class="has-val input espacamento"
+              class="has-val input input espacamento"
               type="password"
               name="password"
-              placeholder="password"
+              placeholder="Password"
               value={dados.password}
               onChange={handleChange}
             />
-            <span className="focus-input" data-placeholder="Password"></span>
           </div>
-          <button class="login-form-btn" type="submit">
-            Enviar
-          </button>
+          <div class="container-login-form-btn">
+            <button class="login-form-btn">Login</button>
+          </div>
         </form>
       </div>
     </LayoutComponents>
   );
 }
 
-export default Signup;
+export default Login;

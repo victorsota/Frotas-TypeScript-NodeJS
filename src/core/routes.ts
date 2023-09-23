@@ -10,6 +10,7 @@ export const routes = Router();
 routes.post("/users", new CreateUserController().create);
 routes.get("/users", new FindAllUsers().list);
 routes.get("/users/:id", new FindUserById().findById);
+routes.post("/login", new LoginUser().login);
 routes.get("/login", new LoginUser().login);
 routes.post(
   "/RotaAuth",

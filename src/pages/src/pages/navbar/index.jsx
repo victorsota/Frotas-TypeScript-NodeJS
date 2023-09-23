@@ -21,12 +21,12 @@ function Navbar() {
       </a>
       <ul className={active}>
         <li className="nav__item">
-          <a href="http://localhost:3001" className="nav__link">
+          <a href="http://localhost:3001/login" className="nav__link">
             LOGIN
           </a>
         </li>
         <li className="nav__item">
-          <a href="http://localhost:3001" className="nav__link">
+          <a href="http://localhost:3001/signup" className="nav__link">
             SIGNUP
           </a>
         </li>
