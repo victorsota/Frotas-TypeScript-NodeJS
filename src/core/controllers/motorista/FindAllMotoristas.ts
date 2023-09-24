@@ -4,8 +4,7 @@ import { MotoristaRepository } from "../../repositories/MotoristaRepository";
 export class FindAllMotoristas {
   async list(req: Request, res: Response) {
     const motoristas = await MotoristaRepository.find({
-      select: ["id", "nome", "cpf", "cnh", "telefone", "email", "ennderco"],
-      relations: ["veiculo"],
+      select: ["id", "nome", "cpf", "telefone", "email", "cnh", "endereco"],
     });
     return res.json(motoristas);
   }

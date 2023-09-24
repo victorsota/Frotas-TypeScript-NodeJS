@@ -5,7 +5,10 @@ export class FindVeiculoById {
   async findById(request: Request, response: Response) {
     const { id } = request.params;
     try {
-      const veiculo = await VeiculoRepository.findOne({ where: { id } });
+      const veiculo = await VeiculoRepository.findOne({
+        where: { id },
+        relations: ["modelo"],
+      });
       return response.status(200).json(veiculo);
     } catch (error) {
       console.log(error);

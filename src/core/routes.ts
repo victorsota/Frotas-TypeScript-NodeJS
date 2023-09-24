@@ -13,6 +13,9 @@ import { FindVeiculoById } from "./controllers/veiculo/FindVeiculoById";
 import { CreateMotorista } from "./controllers/motorista/CreateMotorista";
 import { FindByIdMotorista } from "./controllers/motorista/FindMotoristaById";
 import { FindAllMotoristas } from "./controllers/motorista/FindAllMotoristas";
+import { CreateMotoristaVeiculo } from "./controllers/motorista_veiculo/CreateMotoristaVeciulo";
+import { FindByIdMotoristaVeiculo } from "./controllers/motorista_veiculo/FindMotoristaVeiculoById";
+import { FindAllMotoristaVeiculos } from "./controllers/motorista_veiculo/FindAllMotoristaVeiculos";
 
 export const routes = Router();
 // rotas de usuario
@@ -41,3 +44,8 @@ routes.get("/veiculos", new FindAllVeiculos().list);
 routes.post("/motorista", new CreateMotorista().create);
 routes.get("/motorista/:id", new FindByIdMotorista().findById);
 routes.get("/motoristas", new FindAllMotoristas().list);
+
+// rotas de motorista_veiculo
+routes.post("/motorista_veiculo", new CreateMotoristaVeiculo().create);
+routes.get("/motorista_veiculo/:id", new FindByIdMotoristaVeiculo().findById);
+routes.get("/motorista_veiculos", new FindAllMotoristaVeiculos().list);

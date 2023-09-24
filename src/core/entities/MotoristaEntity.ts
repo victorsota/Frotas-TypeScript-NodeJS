@@ -19,7 +19,7 @@ export class MotoristaEntity {
   email: string;
 
   @Column({ type: "varchar", length: 255 })
-  ennderco: string;
+  endereco: string;
 
   @Column({ type: "varchar", length: 255 })
   cnh: string;
