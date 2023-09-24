@@ -8,6 +8,7 @@ import { CreateModelo } from "./controllers/modelo/createModelo";
 import { FindAllModelos } from "./controllers/modelo/FindAllModelos";
 import { FindByIdModelo } from "./controllers/modelo/FindByIdModelo";
 import { CreateVeiculo } from "./controllers/veiculo/CreateVeiculo";
+import { FindAllVeiculos } from "./controllers/veiculo/FindAllVeiculos";
 
 export const routes = Router();
 
@@ -26,3 +27,4 @@ routes.get("/modelo", new FindAllModelos().list);
 routes.get("/modelo/:id", new FindByIdModelo().findById);
 
 routes.post("/veiculo", new CreateVeiculo().create);
+routes.get("/veiculos", new FindAllVeiculos().list);
