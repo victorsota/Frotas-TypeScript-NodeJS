@@ -5,7 +5,7 @@ import { VeiculoEntity } from "../../entities/VeiculoEntity";
 
 export class CreateVeiculo {
   async create(req: Request, res: Response) {
-    const { modeloId, placa, chassi, renavam } = req.body;
+    const { modeloId, placa, chassi, renavam, status } = req.body;
 
     if (!modeloId || !placa || !chassi || !renavam) {
       return res.status(400).json({
@@ -29,6 +29,7 @@ export class CreateVeiculo {
       veiculo.placa = placa;
       veiculo.chassi = chassi;
       veiculo.renavam = renavam;
+      veiculo.status = status;
 
       await VeiculoRepository.save(veiculo);
       return res.status(201).json(veiculo);
