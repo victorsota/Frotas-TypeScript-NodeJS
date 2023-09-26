@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { LayoutComponents } from "../../components";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+  const navigate = useNavigate();
   const [dados, setDados] = React.useState({
     email: "",
     password: "",
@@ -29,7 +31,13 @@ function Login() {
 
       if (resposta.ok) {
         // Dados enviados com sucesso
-        console.log("Dados enviados com sucesso!" + resposta.json());
+        const data = await resposta.json();
+        const token = data.token; // Obtém o token da resposta
+
+        // Armazena o token no localStorage
+        localStorage.setItem("authToken", token);
+
+        navigate("/veiculos");
       } else {
         const erroJson = await resposta.json();
         setErro(erroJson.message);
