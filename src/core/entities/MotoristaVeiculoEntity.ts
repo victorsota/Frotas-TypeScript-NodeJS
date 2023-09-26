@@ -1,4 +1,10 @@
-import { Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from "typeorm";
 import { MotoristaEntity } from "./MotoristaEntity";
 import { VeiculoEntity } from "./VeiculoEntity";
 
@@ -14,4 +20,7 @@ export class MotoristaVeiculoEntity {
   @ManyToOne(() => VeiculoEntity, (veiculo) => veiculo.motoristaVeiculos)
   @JoinColumn({ name: "veiculo_id" })
   veiculo: VeiculoEntity;
+
+  @Column({ type: "int" })
+  status: number;
 }

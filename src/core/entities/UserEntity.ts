@@ -1,4 +1,7 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { VeiculoEntity } from "./VeiculoEntity";
+import { ModeloEntity } from "./ModeloEntity";
+import { MotoristaEntity } from "./MotoristaEntity";
 
 @Entity("users")
 export class UserEntity {
@@ -13,4 +16,13 @@ export class UserEntity {
 
   @Column({ type: "varchar", length: 30 })
   password: string;
+
+  @OneToMany(() => VeiculoEntity, (veiculo) => veiculo.user)
+  veiculos: VeiculoEntity[];
+
+  @OneToMany(() => ModeloEntity, (modelo) => modelo.user)
+  modelos: ModeloEntity[];
+
+  @OneToMany(() => MotoristaEntity, (motorista) => motorista.user)
+  motoristas: MotoristaEntity[];
 }
