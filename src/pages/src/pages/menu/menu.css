@@ -1,0 +1,91 @@
+/* Adicione este CSS no seu arquivo de estilos */
+
+/* Estilos para o menu de navegação */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+}
+
+.nav__brand {
+  text-decoration: none;
+  font-size: 1.5rem;
+  color: white;
+}
+
+.nav__menu {
+  list-style-type: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav__item {
+  position: relative;
+}
+
+.nav__link {
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* Estilos para o submenu */
+.submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  list-style-type: none;
+  background-color: #333;
+  display: none;
+}
+
+.submenu__item {
+  margin: 0;
+}
+
+.submenu__link {
+  text-decoration: none;
+  color: white;
+  display: block;
+  padding: 10px;
+}
+
+/* Estilos para o ícone do menu */
+.nav__toggler {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.toggle .line1 {
+  transform: rotate(-45deg) translateY(4px) translateX(5px);
+}
+
+.toggle .line2 {
+  opacity: 0;
+}
+
+.toggle .line3 {
+  transform: rotate(45deg) translateY(-4px) translateX(5px);
+}
+
+/* Estilos para o conteúdo da página */
+.page-content {
+  padding: 20px;
+}
+
+/* Estilos para o botão de logout */
+.logout-button {
+  background-color: #ff0000;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background-color: #cc0000;
+}

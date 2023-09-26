@@ -3,6 +3,8 @@ import { createRoot } from "react-dom";
 import Signup from "./pages/signup";
 import Login from "./pages/login";
 import Navbar from "./pages/navbar";
+import Menu from "./pages/menu";
+
 import {
   BrowserRouter as Router,
   Route,
@@ -23,7 +25,7 @@ function Cadastro() {
 function Veiculos() {
   return (
     <div>
-      <Navbar />
+      <Menu />
       <VeiculosList />
     </div>
   );
