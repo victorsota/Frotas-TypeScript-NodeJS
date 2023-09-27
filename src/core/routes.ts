@@ -16,8 +16,10 @@ import { FindAllMotoristas } from "./controllers/motorista/FindAllMotoristas";
 import { CreateMotoristaVeiculo } from "./controllers/motorista_veiculo/CreateMotoristaVeciulo";
 import { FindByIdMotoristaVeiculo } from "./controllers/motorista_veiculo/FindMotoristaVeiculoById";
 import { FindAllMotoristaVeiculos } from "./controllers/motorista_veiculo/FindAllMotoristaVeiculos";
+import { UserController } from "./controllers/user/FindByTokenUser";
 
 export const routes = Router();
+const loginUser = new LoginUser();
 // rotas de usuario
 routes.post("/users", new CreateUserController().create);
 routes.get("/users", new FindAllUsers().list);
@@ -29,6 +31,8 @@ routes.post(
   new LoginUser().verifyToken,
   new RotaAuth().autentication
 );
+routes.get("/user", loginUser.verifyToken, new UserController().getUserByToken);
+routes.get("/profile", new LoginUser().getProfile);
 
 // rotas de modelo
 routes.post("/modelo", new CreateModelo().create);
@@ -36,7 +40,7 @@ routes.get("/modelo", new FindAllModelos().list);
 routes.get("/modelo/:id", new FindByIdModelo().findById);
 
 // rotas de veiculo
-routes.post("/veiculo", new CreateVeiculo().create);
+routes.post("/veiculo", loginUser.verifyToken, new CreateVeiculo().create);
 routes.get("/veiculo/:id", new FindVeiculoById().findById);
 routes.get("/veiculos", new FindAllVeiculos().list);
 

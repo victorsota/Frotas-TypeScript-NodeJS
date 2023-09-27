@@ -4,6 +4,7 @@ import Signup from "./pages/signup";
 import Login from "./pages/login";
 import Navbar from "./pages/navbar";
 import Menu from "./pages/menu";
+import NovoVeiculoPage from "./pages/veiculos/novo";
 
 import {
   BrowserRouter as Router,
@@ -11,7 +12,7 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
-import VeiculosList from "./pages/veiculos";
+import VeiculosList from "./pages/veiculos/listar";
 
 function Cadastro() {
   return (
@@ -31,8 +32,19 @@ function Veiculos() {
   );
 }
 
+function NovoVeiculo() {
+  return (
+    <div>
+      <Menu />
+      <NovoVeiculoPage />
+    </div>
+  );
+}
+
 function PrivateRoute({ element, path }) {
   const token = localStorage.getItem("authToken");
+  console.log("Token:", token);
+  console.log("Path:", path);
 
   if (path === "/login" || path === "/signup") {
     return element;
@@ -60,6 +72,10 @@ root.render(
       <Route
         path="/veiculos"
         element={<PrivateRoute element={<Veiculos />} />}
+      />
+      <Route
+        path="/veiculos/novo"
+        element={<PrivateRoute element={<NovoVeiculo />} />}
       />
     </Routes>
   </Router>

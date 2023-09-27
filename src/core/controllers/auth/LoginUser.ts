@@ -2,6 +2,10 @@ import { Request, Response } from "express";
 import { UserRepository } from "../../repositories/UserRepository";
 import * as jwt from "jsonwebtoken";
 
+type jwtPayload = {
+  id: string;
+};
+
 export class LoginUser {
   async login(req: Request, res: Response) {
     const { email, password } = req.body;
@@ -35,6 +39,7 @@ export class LoginUser {
         });
       }
 
+      const userId = user.id;
       const token = jwt.sign(
         { userId: user.id, email: user.email },
         "chave_secreta",
@@ -42,7 +47,9 @@ export class LoginUser {
           expiresIn: "1h", // Define a validade do token (opcional)
         }
       );
-      return res.status(200).json({ token, message: "Logado com sucesso" });
+      return res
+        .status(200)
+        .json({ token, message: "Logado com sucesso", userId });
     } catch (error) {
       console.log(error);
       return res.status(500).json({
@@ -51,7 +58,33 @@ export class LoginUser {
     }
   }
 
-  async verifyToken(req: Request, res: Response, next: any) {
+  async getProfile(req: Request, res: Response) {
+    const { authorization } = req.headers;
+
+    if (!authorization) {
+      return res.status(401).json({
+        message: "Não autorizado",
+      });
+    }
+
+    const token = authorization.split(" ")[1];
+
+    const { id } = jwt.verify(token, "chave_secreta") as jwtPayload;
+
+    const user = await UserRepository.findOne({ where: { id } });
+
+    if (!user) {
+      return res.status(401).json({
+        message: "Não autorizado",
+      });
+    }
+
+    const { password: _, ...userLogged } = user;
+
+    return res.status(200).json({ userLogged });
+  }
+
+  verifyToken(req: Request, res: Response, next: any) {
     const tokenHeader = req.headers["authorization"];
     const token = tokenHeader?.split(" ")[1];
 

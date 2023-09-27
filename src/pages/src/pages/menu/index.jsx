@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../navbar/navbar.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 function Menu() {
   const navigate = useNavigate(); // Obtém a função de navegação
@@ -50,12 +50,9 @@ function Menu() {
           {submenuVisible && (
             <ul className="submenu">
               <li className="submenu__item">
-                <a
-                  href="http://localhost:3001/veiculos/novo"
-                  className="submenu__link"
-                >
+                <Link to="/veiculos/novo" className="submenu__link">
                   Novo Veículo
-                </a>
+                </Link>
               </li>
               <li className="submenu__item">
                 <a
@@ -74,7 +71,7 @@ function Menu() {
           </a>
         </li>
         <li className="nav__item">
-          <a href="http://localhost:3001/signup" className="nav__link">
+          <a href="http://localhost:3001/veiculos/novo" className="nav__link">
             Modelos
           </a>
         </li>
